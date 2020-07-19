@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<style>
+	div {
+		margin: 1rem;
+	}
+
+	#weatherError {
+		color: red;
+		font-size: 1.5rem;
+	}
+
+	#weatherText {
+		font-size: 2rem;
+	}
+</style>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Weather Test</title>
+	</head>
+	<body>
+		<if (data.weather)>
+			<div id="weatherText">It's ${data.degCel}&#8451; (${data.weather.main.temp}&deg;F) in ${data.weather.name}!</div>
+		</if>
+		<if (data.error)>
+			<div id="weatherError">${data.error}</div>
+		</if>
+		<div class="container">
+		  <fieldset>
+			<form action="/" method="post">
+				<div>
+					<input name="weatherKey" type="text" placeholder="Enter the api key" value='${data.weatherKey}' required>
+					Get the api key from their site
+					<a href="https://home.openweathermap.org/users/sign_up" target="_blank">here,</a>
+					its free and requires no payment info. Alternatively message me and I will send over a key.
+				</div>
+				<div>
+					<input name="city" type="text" placeholder="Enter a City" required>
+					<input type="submit" value="Get Weather">
+				</div>
+			</form>
+		  </fieldset>
+		</div>
+	</body>
+</html>
